@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/pic16f628_IntDy_RTC.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=pic16f628_IntDy_RTC.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=pic16f628intdyrtc.x/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/DynLedInterrupt_RTC.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=DynLedInterrupt_RTC.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=dynledinterruptrtc.x/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/pic16f628intdyrtc.x/bin
+makeDirectory ${TMPDIR}/dynledinterruptrtc.x/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/pic16f628intdyrtc.x.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/dynledinterruptrtc.x.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/pic16f628intdyrtc.x.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/dynledinterruptrtc.x.tar *
 checkReturnCode
 
 # Cleanup

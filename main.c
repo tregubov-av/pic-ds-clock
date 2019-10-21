@@ -5,18 +5,15 @@
 #include "key_flags.h"
 #include "setup_pic16f628a.h"
 
-static unsigned char hcount  = 0;   //Счетчик опроса DS1307.
-static unsigned char kcount = 0;    //Счетчик опроса клавиатуры.
-
 void main(void) {
-    setup_pic();
-    clock_init();
-    TMR0+=100;
-    ei();
-    while (1) {
-        if(!hcount){ds_read(); hcount=200;}
+    setup_pic();                                //Конфигурирование регистров специального назначения.
+    clock_init();                               //Инициализация DS1307.
+    TMR0+=TMR0INI;                              //Инициализировать таймер.
+    ei();                                       //Глобально разрешить прерывания.
+    while (1) {                                 //Начало главного цикла.
+        if(!hcount){ds_read(); hcount=HCOUNT;}
         do{
-            if(!kcount){key_manager(); kcount=20;}
+            if(!kcount){key_manager(); kcount=KCOUNT;}
         }while((!SELECT)&&(BITTST1(cflags,F2)));
     }
 }
@@ -24,12 +21,12 @@ void main(void) {
 void interrupt isr(void){
     static unsigned char index = 0;         //Счетчик переключения разрядов.
     T0IF=0;                                 //Сбросить флаг прерывания.
-    SIND = 0b11111110;                      //Отключение всех сегментов.
+    SIND = SINDOFF;                         //Отключение всех сегментов.
     RIND = arr_ind[index];                  //Выбор активного разряда.
     SIND = arr_seg[ledx_arr[index]];        //Отрисовка значения в активном разряде.
     ++index;                                //Переключить на следующий разряд.
     if(index > inmax){index = inmin;}       //Ограничить преращение index(выбор активных разрядов).
     --hcount;                               //Декрименировать значение счетчика опроса.
     --kcount;
-    TMR0+=100;                              //Инициализировать таймер.
+    TMR0+=TMR0INI;                          //Инициализировать таймер.
 }

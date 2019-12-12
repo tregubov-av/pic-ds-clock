@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=pic16f628_IntDy_RTC.X
+PROJECTNAME=DynLedInterrupt_RTC.X
 
 # Active Configuration
 DEFAULTCONF=default

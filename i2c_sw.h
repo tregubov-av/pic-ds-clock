@@ -15,4 +15,3 @@ volatile unsigned char i2cflag;  //Флаг подтверждения (ACK)
 void i2c_wr_byte(void); //Запрос на запись в устройство
 void i2c_rd_byte(void); //Запрос на чтение из устройства
 #endif	/* I2C_SW_H */
-

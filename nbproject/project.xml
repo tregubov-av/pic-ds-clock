@@ -3,8 +3,8 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>pic16f628_IntDy_RTC</name>
-            <creation-uuid>7600b8de-4993-4d91-9f45-3e993d5685b4</creation-uuid>
+            <name>DynLedInterrupt</name>
+            <creation-uuid>8b528548-44d9-4c91-81f6-4d119e8355ba</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>
